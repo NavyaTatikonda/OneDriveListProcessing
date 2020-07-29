@@ -1,22 +1,16 @@
-import fileinput
 import pandas as pd
+import sys
 
-#empty df
-#column_names = ["a", "b", "c"]
-#df = pd.DataFrame(columns = column_names)
-#print(df)
-
-#for line in fileinput.input():
-#    pass
-df = pd.DataFrame(columns=["Day-Part", "Start Time", "End Time"])
-#user created dataframe------using INPUT
-for _ in range(2):
-
-	dp = input("Enter Part of the Day ")
-	st = input("enter")
-	et = input("Enter ")
-	df1 = pd.DataFrame(data=[[dp,st,et]],columns=["Day-Part", "Start Time", "End Time"])
-	df = pd.concat([df,df1], axis=0)
+df = pd.DataFrame(columns=["A", "B", "C"])
+#parts = int(input("Enter the number of day parts:"))
+parts=3 #number of rows.
+for _ in range(parts):
+    dp1 = sys.argv[1]
+    dp2 = sys.argv[2]
+    dp3 = sys.argv[3]
+    df1 = pd.DataFrame(data=[[dp1 ,dp2,dp3]],columns=["A", "B", "C"])
+    df = pd.concat([df,df1], axis=0)
 
 df.index = range(len(df.index))
+#sys.stdout.write(df)
 print(df)
